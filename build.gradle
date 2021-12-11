@@ -43,7 +43,7 @@ configurations {
     libraries
 }
 
-configurations.compileClasspath.extendsFrom(configurations.libraries)
+configurations.implementation.extendsFrom(configurations.libraries)
 
 dependencies {
     compileOnly 'com.coolspy3:csmodloader:1.0.1'
@@ -57,11 +57,6 @@ dependencies {
 jar {
     from(configurations.libraries) {
         into 'META-INF/libraries'
-    }
-
-    from {
-        exclude "META-INF/*"
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 
@@ -80,7 +75,7 @@ publishing {
         gpr(MavenPublication) {
             groupId = 'com.coolspy3'
             artifactId = 'cshypixelapi'
-            version = '2.0.1'
+            version = '2.0.2'
 
             from components.java
         }
