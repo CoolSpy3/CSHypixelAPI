@@ -14,7 +14,7 @@ import com.coolspy3.cspackets.packets.ClientChatSendPacket;
 import com.coolspy3.util.ModUtil;
 
 @Mod(id = "cshypixelapi", name = "CSHypixelAPI",
-        description = "Provides an interface to Hypixel's public API", version = "1.0.0",
+        description = "Provides an interface to Hypixel's public API", version = "1.1.0",
         dependencies = {"csmodloader:[1,2)", "cspackets:[1,2)", "csutils:[1,2)"})
 public class HypixelAPI implements Entrypoint
 {
