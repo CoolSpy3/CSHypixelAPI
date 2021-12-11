@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.UUID;
-import java.util.function.Function;
 
 import com.coolspy3.csmodloader.GameArgs;
 import com.coolspy3.cspackets.datatypes.MCColor;
@@ -15,14 +14,9 @@ import com.coolspy3.util.ModUtil;
 
 import com.google.gson.Gson;
 import net.hypixel.api.HypixelAPI;
-import net.hypixel.api.apache.ApacheHttpClient;
-import net.hypixel.api.http.HypixelHttpClient;
 
 public class APIConfig
 {
-
-    public static final Function<UUID, HypixelHttpClient> DEFAULT_CLIENT_CONSTRUCTOR =
-            ApacheHttpClient::new;
 
     public UUID apiKey = null;
 
@@ -48,11 +42,6 @@ public class APIConfig
 
     public static HypixelAPI requireAPI() throws IOException
     {
-        return requireAPI(DEFAULT_CLIENT_CONSTRUCTOR);
-    }
-
-    public static HypixelAPI requireAPI(Function<UUID, HypixelHttpClient> client) throws IOException
-    {
         UUID apiKey = getInstance().getAPIKey();
         if (apiKey == null)
         {
@@ -62,7 +51,7 @@ public class APIConfig
 
             return null;
         }
-        return new HypixelAPI(client.apply(apiKey));
+        return new HypixelAPI(apiKey);
     }
 
     public static void load() throws IOException
