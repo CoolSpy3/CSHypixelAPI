@@ -49,8 +49,8 @@ dependencies {
     compileOnly 'com.coolspy3:csmodloader:1.0.1'
     compileOnly 'com.coolspy3:cspackets:1.0.0'
     compileOnly 'com.coolspy3:csutils:1.0.0'
-    implementation 'net.hypixel:HypixelAPI:3.0.0'
-    implementation 'com.github.KevinPriv:MojangAPI:1.0'
+    libraries 'net.hypixel:HypixelAPI:3.0.0'
+    libraries 'com.github.KevinPriv:MojangAPI:1.0'
     testImplementation     'junit:junit:4.13'
 }
 
