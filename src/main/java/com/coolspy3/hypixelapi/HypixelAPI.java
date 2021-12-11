@@ -10,11 +10,11 @@ import com.coolspy3.csmodloader.mod.Mod;
 import com.coolspy3.csmodloader.network.PacketHandler;
 import com.coolspy3.csmodloader.network.SubscribeToPacketStream;
 import com.coolspy3.cspackets.datatypes.MCColor;
-import com.coolspy3.cspackets.packets.ClientChatSendPacket;
+import com.coolspy3.cspackets.packets.ServerChatSendPacket;
 import com.coolspy3.util.ModUtil;
 
 @Mod(id = "cshypixelapi", name = "CSHypixelAPI",
-        description = "Provides an interface to Hypixel's public API", version = "1.1.0",
+        description = "Provides an interface to Hypixel's public API", version = "1.1.1",
         dependencies = {"csmodloader:[1,2)", "cspackets:[1,2)", "csutils:[1,2)"})
 public class HypixelAPI implements Entrypoint
 {
@@ -39,7 +39,7 @@ public class HypixelAPI implements Entrypoint
     }
 
     @SubscribeToPacketStream
-    public void onChatMessageRecieved(ClientChatSendPacket event)
+    public void onChatMessageReceived(ServerChatSendPacket event)
     {
         if (awaitAPIKey)
         {
