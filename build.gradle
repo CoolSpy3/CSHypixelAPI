@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
 }
 
 group = 'com.coolspy3'
@@ -61,5 +62,27 @@ jar {
     from {
         exclude "META-INF/*"
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri "https://maven.pkg.github.com/coolspy3/cshypixelapi"
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            groupId = 'com.coolspy3'
+            artifactId = 'cshypixelapi'
+            version = '1.0.0'
+
+            from components.java
+        }
     }
 }
