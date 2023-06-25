@@ -14,6 +14,7 @@ import com.coolspy3.util.ModUtil;
 
 import com.google.gson.Gson;
 import net.hypixel.api.HypixelAPI;
+import net.hypixel.api.apache.ApacheHttpClient;
 
 public class APIConfig
 {
@@ -51,7 +52,8 @@ public class APIConfig
 
             return null;
         }
-        return new HypixelAPI(apiKey);
+        return new HypixelAPI(new ApacheHttpClient(apiKey));
+        // return new HypixelAPI(apiKey);
     }
 
     public static void load() throws IOException
